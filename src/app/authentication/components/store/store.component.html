@@ -1,0 +1,20 @@
+<app-auth-content>
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i>ร้านค้า</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/', AppUrl.Authen]">หน้าแรก</a></li>
+    </ul>
+  </div>
+  <div class="form-group" *ngFor="let item of allStore; let i = index">
+    <div class="col-md-12">
+      <div class="tile">
+          {{ item.fname}}<br>
+          {{ item.lname}}<br>
+        <button (click)="getUserStore(item.email)" class="btn btn-primary" [routerLink]="['/', AppUrl.Authen, AuthUrl.Storeuser]">ดูรายละเอียด</button>
+      </div>
+    </div>
+  </div>
+</app-auth-content>

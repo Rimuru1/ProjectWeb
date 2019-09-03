@@ -1,0 +1,50 @@
+<section class="material-half-bg">
+  <div class="cover"></div>
+</section>
+<section class="login-content">
+  <div class="logo">
+    <h1>HerPlant</h1>
+  </div>
+  <div class="login-box">
+    <form class="login-form" action="index.html">
+      <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user-plus"></i>ลงทะเบียน</h3>
+      <div class="form-group">
+        <label class="control-label">ชื่อ</label>
+        <input  [(ngModel)]="registerUserData.fname"  name="fname" class="form-control" type="text" placeholder="First Name" autofocus>
+      </div>
+      <div class="form-group">
+        <label class="control-label">นามสกุล</label>
+        <input [(ngModel)]="registerUserData.lname" name="lname" class="form-control" type="text" placeholder="Last Name">
+      </div>
+      <div class="form-group">
+        <label class="control-label">อีเมลล์</label>
+        <input [(ngModel)]="registerUserData.email" name="email" class="form-control" type="text" placeholder="Email" >
+      </div>
+      <div class="form-group">
+        <label class="control-label">ชื่อผู้ใช้</label>
+        <input [(ngModel)]="registerUserData.username" name="username" class="form-control" type="text" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label class="control-label">รหัสผ่าน</label>
+        <input [(ngModel)]="registerUserData.password" name="password" class="form-control" type="password" placeholder="Password">
+      </div>
+      <!-- <div class="form-group">
+        <label class="control-label">ยืนยันรหัสผ่าน</label>
+        <input class="form-control" type="password" placeholder="Confirm Password">
+      </div> -->
+      <div class="form-group">
+          <label class="control-label">ประเภทผู้ใช้</label>
+      <select [(ngModel)]="registerUserData.type" name="type" class="form-control" placeholder="คลิกเพื่อเลือก">
+        <option value="1">ผู้ใช้ทั่วไป</option>
+        <option value="2">ร้านค้า</option>
+      </select>
+      </div>
+      <div class="form-group btn-container">
+        <button  (click)="registerUsers()" class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>ลงทะเบียน</button>
+        <div class="mt-3 text-center">
+          <a [routerLink]="['/', AppUrl.Authen]">เข้าสู่ระบบ</a>
+        </div>
+      </div>
+    </form>  
+  </div>
+</section>

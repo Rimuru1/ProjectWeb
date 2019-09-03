@@ -1,0 +1,16 @@
+<app-auth-content>
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i>หน้าแรก</h1>
+    </div>
+  </div>
+  <div class="form-group" *ngFor="let item of allProduct; let i = index">
+      <div class="col-md-12">
+        <div class="tile">
+            {{ item.productName}}<br>
+            {{ item.price}}<br>
+        </div>
+      </div>
+    </div>
+</app-auth-content>
+

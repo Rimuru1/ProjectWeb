@@ -1,0 +1,53 @@
+<app-auth-content>
+  <div class="app-title">
+    <div>
+      <h1><i class="fa fa-dashboard"></i>ข้อมูลผู้ใช้</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/', AppUrl.Authen]">หน้าแรก</a></li>
+    </ul>
+  </div>
+  <div *ngIf="showUserData.type === '1'" class="form-group">
+    <div class="col-md-12">
+      <div class="tile">
+            <div >
+                {{showUserData.fname}}
+              </div>
+              <div >
+                {{showUserData.lname}}
+              </div>
+              <div >
+                {{showUserData.email}}
+              </div>
+              <div>
+                {{showUserData.username}}
+              </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showUserData.type === '2'" class="row">
+      <div class="col-md-12">
+        <div class="tile">
+              <div>
+                  {{showUserData.fname}}
+                </div>
+                <div>
+                  {{showUserData.lname}}
+                </div>
+                <div>
+                  {{showUserData.email}}
+                </div>
+                <div>
+                  {{showUserData.username}}
+                </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+      <div class="tile">
+      <button [routerLink]="['/',AppUrl.Authen, AuthUrl.Product]" class="btn btn-primary btn-block" ><i class="fa fa-lg fa-fw fa-plus"></i>เพิ่มสินค้า</button>
+      </div>
+      </div>
+    </div>
+</app-auth-content>
