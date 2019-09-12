@@ -22,11 +22,13 @@ export class AuthSidebarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+   
   }
   AppUrl= AppUrl;
   AuthUrl= AuthUrl;
 
   loginUser() {
+    window.location.reload();
     console.log("yes")
       this.service.loginuser(this.loginUserData).subscribe(res => {
         console.log(res)

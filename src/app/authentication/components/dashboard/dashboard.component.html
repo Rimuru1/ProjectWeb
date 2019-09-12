@@ -1,7 +1,7 @@
 <app-auth-content>
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-dashboard"></i>หน้าแรก</h1>
+      <h1>หน้าแรก</h1>
     </div>
   </div>
   <div class="form-group" *ngFor="let item of allProduct; let i = index">
@@ -9,6 +9,7 @@
         <div class="tile">
             {{ item.productName}}<br>
             {{ item.price}}<br>
+            <button (click)="addBasket(item._id,item.email,item.productName,item.price)">เพิ่มสินค้า</button>
         </div>
       </div>
     </div>

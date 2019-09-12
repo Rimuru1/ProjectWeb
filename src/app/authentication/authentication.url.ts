@@ -5,6 +5,7 @@ export const AuthUrl = {
     Auction: 'auction',
     Store: 'store',
     Storeuser: 'store-user',
-    Product: 'add-product'
+    Product: 'add-product',
+    Basket: 'basket'
 
 }

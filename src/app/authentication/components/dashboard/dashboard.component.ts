@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
+import { AppUrl } from 'src/app/app.url';
+import { AuthUrl } from '../../authentication.url';
 declare const App;
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +10,10 @@ declare const App;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  AppUrl = AppUrl;
+  AuthUrl = AuthUrl;
   allProduct: any[] = []
+  email = localStorage.getItem("email")
   constructor(
     private service: ServiceService,
     private router: Router, 
@@ -27,6 +32,25 @@ export class DashboardComponent implements OnInit {
         this.allProduct = jsonData
   
         })
+  }
+  addBasket(_id,email ,product, price){
+  console.log(product)
+    const data = {
+      "id_product": _id,
+      "productName": product,
+      "email": this.email,
+      "emailStore": email,
+      "price": price
+    }
+    this.service.addProductsBasket(data)
+      .subscribe(
+        res => { 
+        console.log(res)
+        localStorage.getItem('token',)
+        },
+        err => console.log(err)
+      )
+      alert("เพิ่มสินค้าเรียบร้อย")
   }
 
 }

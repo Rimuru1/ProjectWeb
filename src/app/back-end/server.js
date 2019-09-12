@@ -7,6 +7,7 @@ const cors = require('cors');
 const FeedbackModel = require('./user');
 const User = require('./user')
 const Product = require('./product')
+const Basket = require('./basket')
 
 
 const PORT = 3000
@@ -87,9 +88,34 @@ app.post('/product', (req, res) => {
     })
 
 });
+app.post('/basket', (req, res) => {
+
+    let basketData = req.body
+    let basket = Basket(basketData)
+    basket.save((error, createBasket) => {
+        if (error) {
+            console.log(error)
+        } else {
+            let payload = { subject: createBasket._id }
+            let token = jwt.sign(payload, 'secretkey')
+            res.status(200).json(basketData)
+        }
+    })
+
+});
 
 app.get('/product',(req, res) => {
     Product.find({} , (err,product) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(product);
+    })
+
+});
+app.get('/product/:email',(req, res) => {
+    Product.find({email:req.params.email} , (err,product) => {
         if(err){
             res.send('somthing');
             next();
@@ -119,3 +145,43 @@ app.get('/store/:email',(req, res) => {
     })
 
 });
+app.get('/userstore/:email',(req, res) => {
+    User.find({email:req.params.email} , (err,user) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(user);
+    })
+
+});
+app.get('/basket/:email',(req, res) => {
+    Basket.find({email:req.params.email} , (err,userData) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(userData);
+    })
+})
+
+app.delete('/delete/myProduct/:id',(req, res) => {
+    Product.findOneAndRemove({_id:req.params.id}, (err, product) => {
+        if(err){
+            res.send('NOOOOOOOOOO!!!!');
+            next();
+        }
+        res.send('successfuly');
+    })
+    
+})
+app.delete('/delete/productMybasket/:id',(req, res) => {
+    Basket.findOneAndRemove({_id:req.params.id}, (err, product) => {
+        if(err){
+            res.send('NOOOOOOOOOO!!!!');
+            next();
+        }
+        res.send('successfuly');
+    })
+    
+})
