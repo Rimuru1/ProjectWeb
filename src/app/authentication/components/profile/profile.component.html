@@ -55,6 +55,7 @@
           <div class="tile">
               {{ item.productName}}<br>
               {{ item.price}}<br>
+              <img src="{{ item.image}}">
               <button (click)="deleteproduct(item._id)">ลบสินค้า</button>
           </div>
         </div>

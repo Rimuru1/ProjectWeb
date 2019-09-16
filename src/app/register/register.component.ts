@@ -23,6 +23,7 @@ AppUrl = AppUrl;
 AuthUrl = AuthUrl;
 
 registerUsers() {
+  
   this.regis.registerUser(this.registerUserData)
     .subscribe(
       res => { 
@@ -30,7 +31,7 @@ registerUsers() {
       localStorage.setItem('token', res.token)
       this._router.navigateByUrl('/')
       },
-      err => console.log(err)
+      err => alert(err)
     )
 }
 

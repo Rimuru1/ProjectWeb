@@ -20,7 +20,8 @@ export class ServiceService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+
   ) { }
 
   registerUser(user){

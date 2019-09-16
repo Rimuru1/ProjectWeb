@@ -7,11 +7,15 @@
     </div>
   </div>
   <ul class="app-menu">
-    <li><a class="app-menu__item active" [routerLink]="['/', AppUrl.Authen]"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">หน้าแรก</span></a></li>
-    <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">รายการ</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+    <li><a class="app-menu__item" [routerLink]="['/', AppUrl.Authen]"  routerLinkActive="active" >
+      <i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">หน้าแรก</span></a></li>
+    <li class="treeview" routerLinkActive="is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview">
+      <i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">รายการ</span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
-        <li><a class="treeview-item" [routerLink]="['/',AppUrl.Authen, AuthUrl.Store]"><i class="icon fa fa-circle-o"></i>ร้านค้า</a></li>
-        <li><a class="treeview-item" [routerLink]="['/',AppUrl.Authen, AuthUrl.Auction]"><i class="icon fa fa-circle-o"></i> ประมูล</a></li>
+        <li><a class="treeview-item" [routerLink]="['/',AppUrl.Authen, AuthUrl.Store]"  routerLinkActive="active">
+          <i class="icon fa fa-circle-o"></i>ร้านค้า</a></li>
+        <li><a class="treeview-item" [routerLink]="['/',AppUrl.Authen, AuthUrl.Auction]"  routerLinkActive="active">
+          <i class="icon fa fa-circle-o"></i> ประมูล</a></li>
       </ul>
     </li>
     <li  class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">ลงชื่อเข้าใช้</span><i class="treeview-indicator fa fa-angle-right"></i></a>

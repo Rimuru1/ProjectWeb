@@ -3,6 +3,7 @@ import { AppUrl } from 'src/app/app.url';
 import { AuthUrl } from '../../authentication.url';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
+import { FormGroup } from '@angular/forms';
 declare const App;
 @Component({
   selector: 'app-add-product',
@@ -15,7 +16,9 @@ export class AddProductComponent implements OnInit {
   type = localStorage.getItem("type")
   productName: any
   price: any 
-  imqge: any 
+  image: any 
+  base64textString: any;
+  form : FormGroup
 
   constructor(
     private service: ServiceService,
@@ -28,12 +31,25 @@ export class AddProductComponent implements OnInit {
   AuthUrl= AuthUrl;
   AppUrl= AppUrl;
 
+  imageProduct(input){
+    const image = this.form.controls[0];
+    if(input.files.length == 0) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(input.files[0]);
+    reader.addEventListener('load', () =>{
+      console.log(reader.result)
+    })
+
+  }
+
   addProduct() {
+   
     const data = {
       "email": this.email,
       "type": this.type,
       "productName": this.productName,
       "price": this.price,
+      "image": this.form,
 
     }
     this.service.addProducts(data)
@@ -46,4 +62,6 @@ export class AddProductComponent implements OnInit {
         err => console.log(err)
       )
   }
+  
+ 
 }

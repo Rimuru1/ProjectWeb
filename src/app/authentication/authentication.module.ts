@@ -11,6 +11,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { FormsModule } from '@angular/forms';
 import { UserStoreComponent } from './components/user-store/user-store.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { AlifeFileToBase64Module } from 'alife-file-to-base64';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BasketComponent } from './components/basket/basket.component';
     CommonModule,
     AuthenticationRouting,
     SharedsModule,
-    FormsModule
+    FormsModule,
+    AlifeFileToBase64Module
   ]
 })
 export class AuthenticationModule { }
