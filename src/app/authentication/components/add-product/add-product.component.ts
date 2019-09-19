@@ -17,8 +17,10 @@ export class AddProductComponent implements OnInit {
   productName: any
   price: any 
   image: any 
+  imageFile: any
   base64textString: any;
   form : FormGroup
+  img:any[] = [];
 
   constructor(
     private service: ServiceService,
@@ -32,14 +34,15 @@ export class AddProductComponent implements OnInit {
   AppUrl= AppUrl;
 
   imageProduct(input){
-    const image = this.form.controls[0];
+    
     if(input.files.length == 0) return;
     const reader = new FileReader();
     reader.readAsDataURL(input.files[0]);
     reader.addEventListener('load', () =>{
       console.log(reader.result)
+     return this.image = reader.result
+      
     })
-
   }
 
   addProduct() {
@@ -49,7 +52,7 @@ export class AddProductComponent implements OnInit {
       "type": this.type,
       "productName": this.productName,
       "price": this.price,
-      "image": this.form,
+      "image": this.image,
 
     }
     this.service.addProducts(data)
