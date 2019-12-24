@@ -1,0 +1,16 @@
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    height: 120px;
+    
+  }
+  .btn-primary{
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+
+  }
+  .table-dark{
+    text-align: center; 
+  }

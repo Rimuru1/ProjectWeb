@@ -5,15 +5,16 @@ const bodyParser = require('body-parser');
 require('./api');
 const cors = require('cors');
 const FeedbackModel = require('./user');
-const User = require('./user')
-const Product = require('./product')
-const Basket = require('./basket')
+const User = require('./user');
+const Product = require('./product');
+const Basket = require('./basket');
+const Auction = require('./auction');
 
 
 const PORT = 3000
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
 app.use(cors())
 // app.use(function (req, res, next) {
 //     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -60,7 +61,7 @@ app.post('/login', (req, res) => {
             console.log(error)
         } else {
             if (!user) {
-                res.status(401).send('Invalid username')
+                res.status(401).send('Invalid email')
             } else
                 if (user.password !== userData.password) {
                     res.status(401).send('Invalid password')
@@ -103,6 +104,22 @@ app.post('/basket', (req, res) => {
     })
 
 });
+app.post('/auction', (req, res) => {
+
+    let auctionData = req.body
+    let auction = Auction(auctionData)
+    auction.save((error, createAuction) => {
+        if (error) {
+            console.log(error)
+        } else {
+            let payload = { subject: createAuction._id }
+            let token = jwt.sign(payload, 'secretkey')
+            res.status(200).json(auctionData)
+        }
+    })
+
+});
+// 
 
 app.get('/product',(req, res) => {
     Product.find({} , (err,product) => {
@@ -165,6 +182,16 @@ app.get('/basket/:email',(req, res) => {
     })
 })
 
+app.get('/products/:emailStore',(req, res) => {
+    Basket.find({emailStore:req.params.emailStore} , (err,userData) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(userData);
+    })
+})
+// delete function
 app.delete('/delete/myProduct/:id',(req, res) => {
     Product.findOneAndRemove({_id:req.params.id}, (err, product) => {
         if(err){
@@ -177,6 +204,17 @@ app.delete('/delete/myProduct/:id',(req, res) => {
 })
 app.delete('/delete/productMybasket/:id',(req, res) => {
     Basket.findOneAndRemove({_id:req.params.id}, (err, product) => {
+        if(err){
+            res.send('NOOOOOOOOOO!!!!');
+            next();
+        }
+        res.send('successfuly');
+    })
+    
+})
+
+app.delete('/delete/Mybasket',(req, res) => {
+    Basket.remove({}, (err, product) => {
         if(err){
             res.send('NOOOOOOOOOO!!!!');
             next();

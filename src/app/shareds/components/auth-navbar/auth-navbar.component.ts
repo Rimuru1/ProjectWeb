@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth-navbar.component.css']
 })
 export class AuthNavbarComponent implements OnInit {
+  allProduct : any [] = []
 
   constructor(
     private service: ServiceService,
@@ -17,9 +18,20 @@ export class AuthNavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.order();
   }
   AppUrl = AppUrl;
   AuthUrl = AuthUrl;
 
+  order(){
+    this.service.getOrder().subscribe(
+      res => { 
+        var data = JSON.stringify(res)
+        var jsonData = JSON.parse(data)
+        this.allProduct = jsonData
+  
+        })
+  
+  }
   
 }

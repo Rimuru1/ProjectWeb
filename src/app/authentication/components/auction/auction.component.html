@@ -10,9 +10,21 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="tile">
-        <div class="tile-body">ประมูลสินค่ากับเรา</div>
-      </div>
+        <div class="tile">
+          <button [routerLink]="['/',AppUrl.Authen, AuthUrl.AddAuction]" class="btn btn-primary " ><i class="fa fa-lg fa-fw fa-plus"></i>เปิดประมูล</button>
+          </div>
     </div>
   </div>
+  <div class="row">
+      <div class="form-group">
+          <div class="col-md-12">
+            <div class="tile">
+            <img src=""><br><br>
+              <i class="fa fa-gavel">ผู้ประมูล</i><br>
+              <i class="fa fa-clock-o">ระยะเวลา</i><br>
+            <button >ประมูล</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </app-auth-content>

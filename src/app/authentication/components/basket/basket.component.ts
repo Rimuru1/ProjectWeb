@@ -38,7 +38,7 @@ export class BasketComponent implements OnInit {
         var data = JSON.stringify(res)
         var jsonData = JSON.parse(data)
         this.allProduct = jsonData
-  
+
         })
   
   }
@@ -49,7 +49,7 @@ export class BasketComponent implements OnInit {
         console.log(res)
         }) 
         window.location.reload();
-        alert("sussecfully")
+        alert("นำออกจากรถเข็นแล้ว")
     }
 
 }

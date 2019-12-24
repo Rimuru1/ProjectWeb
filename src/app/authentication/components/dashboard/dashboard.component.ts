@@ -33,14 +33,14 @@ export class DashboardComponent implements OnInit {
   
         })
   }
-  addBasket(_id,email ,product, price){
-  console.log(product)
+  addBasket(_id,email ,product, price, image){
     const data = {
       "id_product": _id,
       "productName": product,
       "email": this.email,
       "emailStore": email,
-      "price": price
+      "price": price,
+      "image": image
     }
     this.service.addProductsBasket(data)
       .subscribe(
@@ -52,5 +52,5 @@ export class DashboardComponent implements OnInit {
       )
       alert("เพิ่มสินค้าเรียบร้อย")
   }
-
 }
+

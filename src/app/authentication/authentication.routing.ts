@@ -8,6 +8,7 @@ import { StoreComponent } from './components/store/store.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { UserStoreComponent } from './components/user-store/user-store.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { AddAuctionComponent } from './components/add-auction/add-auction.component';
 
 const RouteList: Routes = [
     {
@@ -36,7 +37,12 @@ const RouteList: Routes = [
     },
     {
         path: AuthUrl.Basket, component: BasketComponent
+    },
+    {
+        path: AuthUrl.AddAuction, component: AddAuctionComponent
     }
+ 
+ 
     
 ]
 

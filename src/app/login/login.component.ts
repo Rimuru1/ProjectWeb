@@ -22,7 +22,7 @@ url= AppUrl;
 
 loginUser() {
   console.log("yes")
-    this.service.loginuser(this.loginUserData).subscribe(res => {
+    this.service.loginusers(this.loginUserData).subscribe(res => {
       console.log(res)
       localStorage.setItem("fname", res.fname)
       localStorage.setItem("lname", res.lname)

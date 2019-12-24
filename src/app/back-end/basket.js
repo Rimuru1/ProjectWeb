@@ -2,12 +2,12 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema
 const FeedbackSchema = new Schema({
-    id_product: { type: String },
-    email: { type: String},
-    emailStore: { type: String},
+    id_product: { type: String  ,require: true},
+    email: { type: String  ,require: true},
+    emailStore: { type: String  ,require: true},
     productName: { type: String,require: true },
-    price: { type: String ,require: true},
-    image: { type: String}
+    price: { type: Number ,require: true},
+    image: { type: String  ,require: true}
 
 })
 

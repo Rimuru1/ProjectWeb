@@ -3,7 +3,6 @@ import { AppUrl } from 'src/app/app.url';
 import { AuthUrl } from '../../authentication.url';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
-import { FormGroup } from '@angular/forms';
 declare const App;
 @Component({
   selector: 'app-add-product',
@@ -17,9 +16,6 @@ export class AddProductComponent implements OnInit {
   productName: any
   price: any 
   image: any 
-  imageFile: any
-  base64textString: any;
-  form : FormGroup
   img:any[] = [];
 
   constructor(
@@ -35,7 +31,7 @@ export class AddProductComponent implements OnInit {
 
   imageProduct(input){
     
-    if(input.files.length == 0) return;
+     if(input.files.length == 0) return;
     const reader = new FileReader();
     reader.readAsDataURL(input.files[0]);
     reader.addEventListener('load', () =>{

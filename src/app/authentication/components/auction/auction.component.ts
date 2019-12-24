@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppUrl } from 'src/app/app.url';
+import { AuthUrl } from '../../authentication.url';
 declare const App;
 @Component({
   selector: 'app-auction',
@@ -13,5 +14,6 @@ export class AuctionComponent implements OnInit {
   ngOnInit() {
     App.LoadPage();
   }
-AppUrl= AppUrl
+  AppUrl= AppUrl;
+  AuthUrl= AuthUrl;
 }

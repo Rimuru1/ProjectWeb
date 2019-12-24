@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { UserStoreComponent } from './components/user-store/user-store.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { AlifeFileToBase64Module } from 'alife-file-to-base64';
+import { AddAuctionComponent } from './components/add-auction/add-auction.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AlifeFileToBase64Module } from 'alife-file-to-base64';
     AddProductComponent,
     UserStoreComponent,
     BasketComponent,
+    AddAuctionComponent,
   ],
   imports: [
     CommonModule,

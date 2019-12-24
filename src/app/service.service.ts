@@ -17,6 +17,8 @@ export class ServiceService {
   private _basketUrl = "http://localhost:3000/basket/";
   private _deleteProducBaskettUrl = "http://localhost:3000/delete/productMybasket/";
   private _deleteProductUrl = "http://localhost:3000/delete/myProduct/";
+  private _order = "http://localhost:3000/product/";
+  private _auctionUrl = "http://localhost:3000/auction";
 
   constructor(
     private http: HttpClient,
@@ -30,12 +32,18 @@ export class ServiceService {
   loginuser(user){
     return this.http.post<any>(this._loginUrl, user)
   }
+  loginusers(user){
+    return this.http.post<any>(this._loginUrl, user)
+  }
   logoutUser(){
     localStorage.clear()
     this.router.navigate(['/'])
   }
   addProducts(product){
     return this.http.post<any>(this._productUrl, product)
+  }
+  addAuction(auction){
+    return this.http.post<any>(this._auctionUrl, auction)
   }
   SearchProduct(){
     return this.http.get<any>(this._productUrl)
@@ -60,5 +68,9 @@ SearchMyproduct(){
 }
 deleteProduct(id){
   return this.http.delete(encodeURI(this._deleteProductUrl + id), {responseType: 'text'})
+}
+getOrder(){
+  return this.http.get(this._order+ this.getProductByemail )
+ 
 }
 }

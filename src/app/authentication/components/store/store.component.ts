@@ -35,6 +35,5 @@ allStore: any[] = []
     var Uemail = email
     console.log(Uemail)
     localStorage.setItem("Uemail", Uemail)
-      
     }
 }

@@ -13,6 +13,7 @@
       <div class="tile">
           {{ item.fname}}<br>
           {{ item.lname}}<br>
+          {{ item.email}}<br>
         <button (click)="getUserStore(item.email)" class="btn btn-primary" [routerLink]="['/', AppUrl.Authen, AuthUrl.Storeuser]">ดูรายละเอียด</button>
       </div>
     </div>

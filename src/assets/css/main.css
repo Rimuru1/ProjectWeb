@@ -611,6 +611,7 @@ pre code {
       flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  
 }
 
 .no-gutters {
@@ -13079,7 +13080,8 @@ be a descendant of the grid when it is being dragged.
   min-height: calc(100vh - 50px);
   margin-top: 50px;
   padding: 30px;
-  background-color: #E5E5E5;
+  /* background-color: #E5E5E5; */
+  background-image: url(258.jpg);
   -webkit-transition: margin-left 0.3s ease;
   -o-transition: margin-left 0.3s ease;
   transition: margin-left 0.3s ease;
@@ -13108,7 +13110,7 @@ be a descendant of the grid when it is being dragged.
   .app-content {
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: rgba(243, 12, 12, 0.857);
   }
 }
 
@@ -13158,7 +13160,7 @@ be a descendant of the grid when it is being dragged.
           flex: 1 0 auto;
   color: #fff;
   text-align: center;
-  font-family: 'Niconne';
+  font-family: '';
   padding: 0 15px;
   font-size: 26px;
   font-weight: 400;

@@ -8,18 +8,27 @@
       <button class="app-search__button"><i class="fa fa-search"></i></button>
     </li>
     <!--Notification Menu-->
-    <li class="dropdown"><a class="app-nav__item" [routerLink]="['/', AppUrl.Authen, AuthUrl.Basket]"><i class="fa fa-bell-o fa-lg" ></i></a>
-      
+    <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
+      <ul class="app-notification dropdown-menu dropdown-menu-right">
+        <div class="app-notification__content">
+          <li *ngFor="let item of allProduct; let i = index"><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+              <div>
+                <p class="app-notification__message">{{ item.productName}}</p>
+                <p class="app-notification__meta">2 min ago</p>
+              </div></a></li>
+          </div>
+        
+        <li class="app-notification__footer"><a href="#">See all notifications.</a></li>
+      </ul>
     </li>
     <li class="dropdown"><a class="app-nav__item" [routerLink]="['/', AppUrl.Authen, AuthUrl.Basket]"><i class="fa fa-bell-o fa-lg" ></i></a>
       
     </li>
     <!-- User Menu-->
-    <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+    <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-cog fa-lg"></i></a>
       <ul class="dropdown-menu settings-menu dropdown-menu-right">
         <li><a class="dropdown-item" [routerLink]="['/',AppUrl.Authen, AuthUrl.Settings]"><i class="fa fa-cog fa-lg"></i>ตั้งค่า</a></li>
         <li><a class="dropdown-item" [routerLink]="['/', AppUrl.Authen, AuthUrl.Profiles]"><i class="fa fa-user fa-lg"></i>ข้อมูลผู้ใช้</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/', AppUrl.Login]"><i class="fa fa-user fa-lg"></i>เข้าสู่ระบบ</a></li>
         <li><a class="dropdown-item" (click)="service.logoutUser()"><i class="fa fa-sign-out fa-lg"></i>ออกจากระบบ</a></li>
       </ul>
     </li>
