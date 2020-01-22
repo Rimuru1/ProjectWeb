@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AuthUrl } from './authentication.url';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingComponent } from './components/setting/setting.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuctionComponent } from './components/auction/auction.component';
@@ -9,13 +8,16 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { UserStoreComponent } from './components/user-store/user-store.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { AddAuctionComponent } from './components/add-auction/add-auction.component';
+import { BitAuctionComponent } from './components/bit-auction/bit-auction.component';
+import { HomeComponent } from './components/home/home.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 const RouteList: Routes = [
     {
-        path: '', redirectTo: AuthUrl.Dashboards, pathMatch: 'full'
+        path: '', redirectTo: AuthUrl.Home, pathMatch: 'full'
     },
     {
-        path: AuthUrl.Dashboards, component: DashboardComponent
+        path: AuthUrl.Home, component: HomeComponent
     },
     {
         path: AuthUrl.Settings, component: SettingComponent
@@ -40,6 +42,12 @@ const RouteList: Routes = [
     },
     {
         path: AuthUrl.AddAuction, component: AddAuctionComponent
+    },
+    {
+        path: AuthUrl.BitAuction, component: BitAuctionComponent
+    },
+    {
+        path: AuthUrl.EditProfile, component: EditProfileComponent
     }
  
  

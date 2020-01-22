@@ -1,0 +1,33 @@
+<app-auth-content>
+  <div class="app-title">
+    <div>
+      <h1>ประมูล</h1>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/', AppUrl.Authen]">หน้าแรก</a></li>
+    </ul>
+  </div>
+  <section class="login-content">
+    <div class="login-box">
+      <form class="login-form" action="index.html">
+        <h3 class="login-head"><i class="fa fa-lg fa-fw fa-plus"></i>แก้ไขข้อมูล</h3>
+        <div class="form-group">
+          <label class="control-label">ชื่อ</label>
+          <input  name="lname" class="form-control" type="text" placeholder="{{showUserData.fname}}">
+        </div> 
+        <div class="form-group">
+          <label class="control-label">นาสกุล</label>
+          <input  name="lname" class="form-control" type="text" placeholder="{{showUserData.lname}}">
+        </div> 
+        <div class="form-group">
+          <label class="control-label">ที่อยู่</label>
+          <textarea name="address" class="form-control" type="text" placeholder="{{showUserData.fname}}"></textarea>
+        </div>
+        <div class="form-group btn-container">
+          <button (click)="addProduct()" class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>เพิ่มสินค้า</button>
+        </div>
+      </form>  
+    </div>
+  </section>
+</app-auth-content>

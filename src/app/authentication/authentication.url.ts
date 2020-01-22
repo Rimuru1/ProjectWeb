@@ -1,5 +1,5 @@
 export const AuthUrl = {
-    Dashboards: 'dashboard',
+    Home: 'home',
     Settings: 'setting',
     Profiles: 'profile',
     Auction: 'auction',
@@ -7,6 +7,8 @@ export const AuthUrl = {
     Storeuser: 'store-user',
     Product: 'add-product',
     Basket: 'basket',
-    AddAuction: 'add-auction'
+    AddAuction: 'add-auction',
+    BitAuction:'bit-auction',
+    EditProfile: 'edit-profile'
 
 }

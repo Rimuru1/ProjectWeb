@@ -9,12 +9,15 @@ import { SharedsModule } from './shareds/shareds.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CountdownTimerModule } from 'angular-countdown-timer';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     SharedsModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    CountdownTimerModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

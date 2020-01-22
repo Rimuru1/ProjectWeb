@@ -191,6 +191,17 @@ app.get('/products/:emailStore',(req, res) => {
         res.json(userData);
     })
 })
+app.get('/auction',(req, res) => {
+    Auction.find({} , (err,auction) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(auction);
+    })
+
+});
+
 // delete function
 app.delete('/delete/myProduct/:id',(req, res) => {
     Product.findOneAndRemove({_id:req.params.id}, (err, product) => {
@@ -222,4 +233,11 @@ app.delete('/delete/Mybasket',(req, res) => {
         res.send('successfuly');
     })
     
+})
+//update
+app.put('/edituser/:id',async(req,res) =>{
+    const dataUser = req.body
+    const {id} = req.params
+    const data = await User.findByIdAndUpdate(id,{$set:dataUser})
+    res.json(data)
 })

@@ -17,6 +17,9 @@
               <div >
                 {{showUserData.lname}}
               </div>
+              <div>
+                {{showUserData.address}}
+              </div>
               <div >
                 {{showUserData.email}}
               </div>
@@ -37,11 +40,16 @@
                   {{showUserData.lname}}
                 </div>
                 <div>
+                  {{showUserData.address}}
+                </div>
+                <div>
                   {{showUserData.email}}
                 </div>
                 <div>
                   {{showUserData.username}}
                 </div>
+                <input type="text" name="edit" [(ngModel)]="edituser">
+                <button (click)="editUser()">1234</button>
         </div>
       </div>
       <div class="col-md-12">

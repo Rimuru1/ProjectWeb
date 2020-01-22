@@ -14,7 +14,8 @@ export class AddAuctionComponent implements OnInit {
   username = localStorage.getItem("username")
   productName: any
   price: any 
-  image : any 
+  image : any
+  date : any 
   time : any 
 
   constructor(
@@ -46,10 +47,10 @@ export class AddAuctionComponent implements OnInit {
     "productName": this.productName,
     "price": this.price,
     "image": this.image,
-    "time": this.time
+    "date": this.date,
+    "endTime": this.date
 
   }
-  console.log(data)
   this.service.addAuction(data)
     .subscribe(
       res => { 

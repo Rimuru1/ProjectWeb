@@ -6,6 +6,7 @@ const FeedbackSchema = new Schema({
     fname: { type: String  ,require: true},
     lname: { type: String  ,require: true},
     email: { type: String, unique: true  ,require: true},
+    address: { type: String, unique: true ,require: true},
     username: { type: String ,unique: true ,require: true},
     password: { type: String  ,require: true},
     type: { type: String, required: true  ,require: true}

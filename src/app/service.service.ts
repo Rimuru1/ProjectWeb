@@ -54,6 +54,9 @@ export class ServiceService {
   SearchProductStore(){
   return this.http.get(this._myProductUrl+this.Uemail)
 }
+  getAuction(){
+  return this.http.get(this._auctionUrl)
+}
   addProductsBasket(product){
   return this.http.post<any>(this._basketUrl, product)
 }
@@ -73,4 +76,9 @@ getOrder(){
   return this.http.get(this._order+ this.getProductByemail )
  
 }
+editprofile(i){
+console.log('hhhh')
+  return this.http.put('http://localhost:3000/edituser/'+i._id,i)
+}
+
 }

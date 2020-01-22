@@ -23,18 +23,17 @@ AppUrl = AppUrl;
 AuthUrl = AuthUrl;
 
 registerUsers() {
-  console.log(this.registerUserData)
-  
-  // this.regis.registerUser(this.registerUserData)
-  //   .subscribe(
-  //     res => { 
-  //     console.log(res)
-  //     localStorage.setItem('token', res.token)
-  //     alert("ลงทะเบียนเรียบร้อย")
-  //     this._router.navigateByUrl('/login')
-  //     },
-  //     err => alert(err)
-  //   )
+  console.log(this.registerUserData) 
+  this.regis.registerUser(this.registerUserData)
+    .subscribe(
+      res => { 
+      console.log(res)
+      localStorage.setItem('token', res.token)
+      alert("ลงทะเบียนเรียบร้อย")
+      this._router.navigateByUrl('/login')
+      },
+      err => alert(err)
+    )
 }
 
 }

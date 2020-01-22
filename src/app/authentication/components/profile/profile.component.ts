@@ -14,12 +14,15 @@ export class ProfileComponent implements OnInit {
   showUserData = {
     "fname": localStorage.getItem("fname"),
     "lname": localStorage.getItem("lname"),
+    "address": localStorage.getItem("address"),
     "email": localStorage.getItem("email"),
     "username": localStorage.getItem("username"),
     "type": localStorage.getItem("type"),
    
 
   }
+  edituser : any
+  ID = localStorage.getItem("id")
 
   constructor(
     private service: ServiceService,
@@ -51,5 +54,17 @@ export class ProfileComponent implements OnInit {
         })
         window.location.reload();
         alert("sussecfully")
+      }
+
+      editUser(){
+        const data = {
+          "_id": this.ID,
+          "fname": this.edituser
+        }
+        localStorage.setItem('fname',this.edituser)
+        this.service.editprofile(data).subscribe(()=>{})
+        setTimeout(()=>{
+          window.location.reload();
+        },2000)
       }
 }
