@@ -19,6 +19,7 @@ export class ServiceService {
   private _deleteProductUrl = "http://localhost:3000/delete/myProduct/";
   private _order = "http://localhost:3000/product/";
   private _auctionUrl = "http://localhost:3000/auction";
+  private _bitprict = "http://localhost:3000/bit"
 
   constructor(
     private http: HttpClient,
@@ -34,6 +35,9 @@ export class ServiceService {
   }
   loginusers(user){
     return this.http.post<any>(this._loginUrl, user)
+  }
+  bitPrice(bit){
+    return this.http.post<any>(this._bitprict, bit)
   }
   logoutUser(){
     localStorage.clear()

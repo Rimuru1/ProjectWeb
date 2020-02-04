@@ -24,8 +24,9 @@
                 {{showUserData.email}}
               </div>
               <div>
-                {{showUserData.username}}
+              {{showUserData.username}}
               </div>
+              <button [routerLink]="['/',AppUrl.Authen, AuthUrl.EditProfile]" class="btn btn-primary " ><i class="fa fa-lg fa-fw fa-plus"></i>แก้ไขข้อมูล</button>
       </div>
     </div>
   </div>
@@ -48,8 +49,7 @@
                 <div>
                   {{showUserData.username}}
                 </div>
-                <input type="text" name="edit" [(ngModel)]="edituser">
-                <button (click)="editUser()">1234</button>
+                <button [routerLink]="['/',AppUrl.Authen, AuthUrl.EditProfile]" class="btn btn-primary " ><i class="fa fa-lg fa-fw fa-plus"></i>แก้ไขข้อมูล</button>
         </div>
       </div>
       <div class="col-md-12">

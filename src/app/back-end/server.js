@@ -9,6 +9,8 @@ const User = require('./user');
 const Product = require('./product');
 const Basket = require('./basket');
 const Auction = require('./auction');
+const nodemailer = require('nodemailer');
+const Bitprice = require('./bitprice');
 
 
 const PORT = 3000
@@ -119,6 +121,19 @@ app.post('/auction', (req, res) => {
     })
 
 });
+app.post('/bit', (req, res) =>{
+    let bitData = req.body
+    let bit = Bitprice(bitData)
+    bit.save((error, createBit) =>{
+        if(error){
+            console.log(error)
+        } else{
+            let payload = {subject: createBit._id }
+            let token = jwt.sign(payload, 'secrekey')
+            res.status(200).json(bitData)
+        }
+    })
+})
 // 
 
 app.get('/product',(req, res) => {
@@ -141,6 +156,18 @@ app.get('/product/:email',(req, res) => {
     })
 
 });
+
+app.get('/auction/:_id',(req, res) => {
+    Auction.find({_id:req.params._id} , (err,auction) => {
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(auction);
+    })
+
+});
+
 
 app.get('/store',(req, res) => {
     User.find({type:req.params.type=2} , (err,user) => {
@@ -201,7 +228,15 @@ app.get('/auction',(req, res) => {
     })
 
 });
-
+app.get('/bit/:id_auction', (req, res) =>{
+    Bitprice.find({id_auction:req.params.id_auction},(err, bitData)=>{
+        if(err){
+            res.send('somthing');
+            next();
+        }
+        res.json(bitData)
+    })
+})
 // delete function
 app.delete('/delete/myProduct/:id',(req, res) => {
     Product.findOneAndRemove({_id:req.params.id}, (err, product) => {
@@ -241,3 +276,44 @@ app.put('/edituser/:id',async(req,res) =>{
     const data = await User.findByIdAndUpdate(id,{$set:dataUser})
     res.json(data)
 })
+
+// sendEmail
+let Emailstore
+app.post('/sendemail',(req,res) =>{
+    res.json(req.body)
+    let data = req.body
+    Emailstore = data
+    console.log(Emailstore.emailStore)
+    Sendemail();
+    
+
+})
+
+function Sendemail(){
+    const transpoter = nodemailer.createTransport({
+        host: 'smtp.gmail.com ',
+        secure: false,
+        port: 587,
+        requireTLS: true, 
+        auth: {
+            user: 'arkhane@cpru.ac.th',
+            pass: '0913536568'
+        }
+    })
+
+    let message = {
+        from: 'arkhane@cpru.ac.th',
+        to: Emailstore.emailStore,
+        subject: Emailstore.productName,
+        text: 'ราคา : '+ Emailstore.price + 'บาท' + '\n' + 'ชื่อ-สกุล : ' 
+
+    }
+    console.log(message)
+
+    transpoter.sendMail(message,(err, info)=>{
+        if(err)
+        console.log(err)
+        else
+        console.log(info)
+    })
+}

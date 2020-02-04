@@ -3,7 +3,7 @@ import { AppUrl } from 'src/app/app.url';
 import { AuthUrl } from '../../authentication.url';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/service.service';
-import { BitAuctionComponent } from '../bit-auction/bit-auction.component';
+
 
 declare const App;
 
@@ -17,17 +17,24 @@ export class AuctionComponent implements OnInit {
   allProduct:any[] = [];
   time = 120
   countdown;
-  timecount;  
+  timecount;
+  days;
+  hours;
+  mins;
+  secs;
+  d = "2020-02-01" ;
+  t;
+
   constructor(
     private service: ServiceService,
     private router: Router,
-    private bitprice: BitAuctionComponent
   
   ) { }
 
   ngOnInit() {
     App.LoadPage();
     this.GetAuction();
+    this.setdate();
     // this.timer(this.time)
   
   }
@@ -40,13 +47,22 @@ export class AuctionComponent implements OnInit {
         var data = JSON.stringify(res)
         var jsonData = JSON.parse(data)
         this.allProduct = jsonData
+        console.log(this.allProduct[1].price)
   
         })
   }
-  setdate(date){
-    // this.bitprice.time(date)
-    // this.router.navigate(['/authentication/bit-auction'])
-  // return this.date = date  
+  setdate(){
+    var endTime = new Date(this.d).getTime();
+    var timer = setInterval( ()=> {
+      let now = new Date().getTime();
+      let t = endTime - now;
+      if( t >=0) {
+        this.days = Math.floor(t / (1000 * 60 * 60 * 24));
+        this.hours = Math.floor((t % (1000 *60 * 60 * 24)) / (1000 * 60 *60));
+        this.mins = Math.floor(( t % (1000 * 60 *60 )) / (1000 *60));
+        this.secs = Math.floor(( t %(1000 * 60)) / 1000);
+      }
+    },1000)
   }
   
   triggerFunction() {
@@ -70,4 +86,9 @@ export class AuctionComponent implements OnInit {
   //   const time = `${minutes}:${remainderSeconds < 10 ? '0': ''}${remainderSeconds}`; 
   //   return this,this.timecount = time
   // }
+  bitprice(id){
+    console.log(id)
+    localStorage.setItem('_ID_auction', id)
+    this.router.navigateByUrl("/authentication/bit-auction")
+  }
 }

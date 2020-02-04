@@ -5,7 +5,7 @@ const FeedbackSchema = new Schema({
     username: {type: String  ,require: true},
     type: {type: String  ,require: true},
     productName: { type: String  ,require: true},
-    date: {type: Date ,require: true},
+    date: {type: String ,require: true},
     endTime : { type : String, require: true},
     price: { type: Number  ,require: true},
     image: { type: String  ,require: true}

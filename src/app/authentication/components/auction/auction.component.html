@@ -22,16 +22,17 @@
               <img src="{{ item.image}}"><br><br>
               <i class="fa fa-gavel">ผู้ประมูล {{item.username}}</i><br>
               <i class="fa fa-gavel">เวลาปิดการประมูล {{item.endTime}}</i><br>
+              <i class="fa fa-gavel">{{days}}วัน {{hours}}ชั่วโมง {{mins}}นาที {{secs}}วินาที</i><br>
               <li class="dropdown"  (click)="setdate(item.date)" ><a class="app-nav__item" data-toggle="dropdown" aria-label="Show notifications"></a>
                 <ul class="app-notification dropdown-menu dropdown-menu-center">
                   <div class="app-notification__content">
-                    เวลา<countdown-timer [end]="date"></countdown-timer> <br>
+                    เวลา<countdown-timer [end]="2020-02-01"></countdown-timer> <br>
                     บิตราคา<br>
                     </div>
                   <li class="app-notification__footer"><button >ประมูล</button></li>
                 </ul>
               </li>
-            <button >ประมูล</button>
+            <button (click)="bitprice(item._id)">ประมูล</button>
 
             </div>
           </div>

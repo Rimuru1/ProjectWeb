@@ -17,7 +17,6 @@
                   <th  scope="col">ลำดับ</th>
                   <th scope="col">สินค้า</th>
                   <th scope="col">ราคา</th>
-                  <th scope="col">รวม</th>
                 </tr>
               </thead>
               <tbody>
@@ -31,10 +30,9 @@
               </tbody>
               <tbody>
              <tr>
+               <td>รวม</td>
                <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
+               <td>{{allsum}}</td>
                <td><button class="btn btn-primary" [routerLink]="['/', AppUrl.Authen, AuthUrl.Basket]" >ชำระเงิน</button></td>
              </tr>
               </tbody>

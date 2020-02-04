@@ -3,6 +3,7 @@ import { ServiceService } from 'src/app/service.service';
 import { AppUrl } from 'src/app/app.url';
 import { AuthUrl } from '../../authentication.url';
 import { HttpClient } from '@angular/common/http';
+import { EmailValidator } from '@angular/forms';
 declare const App;
 
 @Component({
@@ -50,27 +51,24 @@ export class BasketComponent implements OnInit {
 
     this.http.get<any>('http://localhost:3000/basket/'+this.email1).subscribe((req)=>{
       this.allProduct=req;
-      console.log(this.allProduct)
-      console.log(this.allProduct.length)
-      this.allsome();
+      this.allsume();
     })
         
   
   }
-  y:number
-  allsome(){
+  allsum:number
+  allsume(){
     let x = 0
     let allprice = Number(this.allProduct.length)
-    console.log(this.allProduct.length)
     for (var i = 0; i < allprice; i++){
       let allmany = Number(this.allProduct[i].price);
       x += allmany;
+      localStorage.setItem("date"+ i ,this.allProduct[i].price)
     }
-    this.y = x
-    console.log(this.y)
+    this.allsum = x
+    
   }
   deleteproduct(id) {
-    console.log(id)
     this.service.deleteProductBasket(id).subscribe(
       res => { 
         console.log(res)
