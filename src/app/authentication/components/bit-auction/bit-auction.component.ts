@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { AppUrl } from 'src/app/app.url';
 import { AuthUrl } from '../../authentication.url';
 import { ServiceService } from 'src/app/service.service';
@@ -9,8 +9,12 @@ declare const App;
   selector: 'app-bit-auction',
   templateUrl: './bit-auction.component.html',
   styleUrls: ['./bit-auction.component.css']
+ 
 })
+
 export class BitAuctionComponent implements OnInit {
+  @Input("item") item
+  
   _id = localStorage.getItem("_ID_auction")
   fname = localStorage.getItem("fname")
   lname = localStorage.getItem("lname")
@@ -35,7 +39,9 @@ export class BitAuctionComponent implements OnInit {
 
   ngOnInit() {
     App.LoadPage();
-    this.getauction();
+    console.log(this.item)
+    // this.getauction();
+    this.setdate();
     
   }
   AppUrl = AppUrl;
@@ -50,17 +56,20 @@ export class BitAuctionComponent implements OnInit {
 
     })
   }
+  id = "" + Math.random();
   setdate(){
-    console.log(this.d)
-    var endTime = new Date(this.d).getTime();
+    
+    var endTime = new Date(this.item.endTime).getTime();
     var timer = setInterval( ()=> {
       let now = new Date().getTime();
       let t = endTime - now;
       if( t >=0) {
-        this.days = Math.floor(t / (1000 * 60 * 60 * 24));
-        this.hours = Math.floor((t % (1000 *60 * 60 * 24)) / (1000 * 60 *60));
-        this.mins = Math.floor(( t % (1000 * 60 *60 )) / (1000 *60));
-        this.secs = Math.floor(( t %(1000 * 60)) / 1000);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((t % (1000 *60 * 60 * 24)) / (1000 * 60 *60));
+        var mins = Math.floor(( t % (1000 * 60 *60 )) / (1000 *60));
+        var secs = Math.floor(( t %(1000 * 60)) / 1000);
+
+        document.getElementById(this.id).innerHTML = days + " : " + hours + " : " + mins + " : " + secs
       }
     },1000)
   }
@@ -89,6 +98,11 @@ export class BitAuctionComponent implements OnInit {
       this.listBit = req
   
   })
+  
+
+}
+Auction(item){
+  localStorage.setItem('ID_auction' , item._id)
 
 }
 }

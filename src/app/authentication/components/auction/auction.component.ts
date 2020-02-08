@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { AppUrl } from 'src/app/app.url';
 import { AuthUrl } from '../../authentication.url';
 import { Router } from '@angular/router';
@@ -16,14 +16,7 @@ export class AuctionComponent implements OnInit {
   date : any [] = [];
   allProduct:any[] = [];
   time = 120
-  countdown;
-  timecount;
-  days;
-  hours;
-  mins;
-  secs;
-  d = "2020-02-01" ;
-  t;
+ 
 
   constructor(
     private service: ServiceService,
@@ -34,7 +27,6 @@ export class AuctionComponent implements OnInit {
   ngOnInit() {
     App.LoadPage();
     this.GetAuction();
-    this.setdate();
     // this.timer(this.time)
   
   }
@@ -47,24 +39,10 @@ export class AuctionComponent implements OnInit {
         var data = JSON.stringify(res)
         var jsonData = JSON.parse(data)
         this.allProduct = jsonData
-        console.log(this.allProduct[1].price)
   
         })
   }
-  setdate(){
-    var endTime = new Date(this.d).getTime();
-    var timer = setInterval( ()=> {
-      let now = new Date().getTime();
-      let t = endTime - now;
-      if( t >=0) {
-        this.days = Math.floor(t / (1000 * 60 * 60 * 24));
-        this.hours = Math.floor((t % (1000 *60 * 60 * 24)) / (1000 * 60 *60));
-        this.mins = Math.floor(( t % (1000 * 60 *60 )) / (1000 *60));
-        this.secs = Math.floor(( t %(1000 * 60)) / 1000);
-      }
-    },1000)
-  }
-  
+
   triggerFunction() {
     console.log('Timer Ended');
   }

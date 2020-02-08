@@ -1,37 +1,23 @@
-<app-auth-content>
-  <div class="app-title">
-    <div>
-      <h1>ประมูล</h1>
-    </div>
-    <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-      <li class="breadcrumb-item"><a [routerLink]="['/', AppUrl.Authen]">หน้าแรก</a></li>
-    </ul>
-  </div>
-  <section class="login-content">
-    <div class="login-box">
-      <form class="login-form" *ngFor="let item of auction; let i = index">
-        <h3 class="login-head"><i class="fa fa-lg fa-fw fa-plus"></i>เพิ่มสินค้า</h3>
+
+    <div class="login-box" (click)="Auction(item)">
+      <form class="login-form" >
         <div class="form-group">
           <label class="control-label">ชื่อสินค้า</label>
-          {{item.productName}}
+          {{this.item.productName}}
         </div>
         <div class="form-group">
           <label class="control-label">ราคา</label>
-          {{item.price}}
+          {{this.item.price}}
         </div> 
         <div class="form-group">
           <label class="control-label">ตัวอย่างสินค้า</label>
         <div >
-          <img src="{{item.image}}">
+          <img src="{{this.item.image}}">
         </div>    
         <div class="form-group">
           <br>
           <br>
-          <label class="control-label">วัน</label>{{days}}
-          <label class="control-label">ชั่วโมง</label>{{hours}}
-          <label class="control-label">นาที</label>{{mins}}
-          <label class="control-label">วินาที</label>{{secs}}
+          <label class="control-label" id="{{id}}"></label>
         </div>
         <div class="form-group">
           <label class="control-label">ราคา</label>
@@ -43,36 +29,3 @@
         </div>
       </form>  
     </div>
-  </section>
-  <div class="form-group">
-    <div class="col-md-12">
-        <table  class="table table-dark">
-            <thead>
-              <tr>
-                <th  scope="col">ลำดับ</th>
-                <th scope="col">สินค้า</th>
-                <th scope="col">ราคา</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr  *ngFor="let item of listBit; let i = index">
-                <th scope="row">{{1+i}}</th>
-                <td> {{ item.fname}} {{ item.lname }}</td>
-                <td>{{ item.price }}</td> 
-                <td></td> 
-              </tr>
-                
-            </tbody>
-            <tbody>
-           <tr>
-             <td>รวม</td>
-             <td></td>
-             <td>{{allsum}}</td>
-             <td><button class="btn btn-primary" [routerLink]="['/', AppUrl.Authen, AuthUrl.Basket]" >ชำระเงิน</button></td>
-           </tr>
-            </tbody>
-          </table>
-
-      </div>
-    </div>
-</app-auth-content>
